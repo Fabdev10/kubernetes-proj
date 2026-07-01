@@ -1,0 +1,21 @@
+# Node
+node_modules
+npm-debug.log*
+package-lock.json
+
+# Docker
+**/Dockerfile*
+**/.dockerignore
+
+env
+*.env
+
+# VS Code
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Docker Compose volume data
+**/postgres_data

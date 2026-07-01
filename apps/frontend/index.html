@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TaskFlow</title>
+    <style>
+      body { font-family: Arial, sans-serif; margin: 2rem; background: #f5f7fb; color: #1f2937; }
+      .card { background: white; padding: 1.5rem; border-radius: 12px; max-width: 700px; margin: 0 auto; box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08); }
+      form { display: flex; gap: 0.5rem; margin-bottom: 1rem; }
+      input[type="text"] { flex: 1; padding: 0.7rem; border: 1px solid #cbd5e1; border-radius: 8px; }
+      button { padding: 0.7rem 1rem; border: none; border-radius: 8px; cursor: pointer; }
+      button.primary { background: #2563eb; color: white; }
+      button.secondary { background: #e2e8f0; color: #0f172a; }
+      ul { list-style: none; padding: 0; }
+      li { display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; padding: 0.8rem 0; border-bottom: 1px solid #e2e8f0; }
+      .task-main { display: flex; align-items: center; gap: 0.75rem; }
+      .done { text-decoration: line-through; color: #64748b; }
+      .status { margin-top: 1rem; color: #475569; }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <h1>TaskFlow</h1>
+      <form id="task-form">
+        <input id="task-title" type="text" placeholder="Add a new task" required />
+        <button class="primary" type="submit">Add</button>
+      </form>
+      <ul id="task-list"></ul>
+      <div class="status" id="status">Loading tasks...</div>
+    </div>
+    <script src="/config.js"></script>
+    <script src="/app.js"></script>
+  </body>
+</html>
