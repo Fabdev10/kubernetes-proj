@@ -47,6 +47,13 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
+      - name: Verify Docker build context
+        run: |
+          pwd
+          ls -la
+          ls -la apps/api
+          ls -la apps/frontend
+
       - name: Build and push API image
         uses: docker/build-push-action@v6
         with:
