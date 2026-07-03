@@ -34,7 +34,7 @@ jobs:
         run: npm --prefix apps/api test
 
   build-and-publish:
-    if: startsWith(github.ref, 'refs/tags/v')
+    if: github.event_name == 'push' && (github.ref == 'refs/heads/main' || startsWith(github.ref, 'refs/tags/v'))
     needs: test
     runs-on: ubuntu-latest
     steps:
