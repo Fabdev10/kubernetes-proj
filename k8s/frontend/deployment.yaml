@@ -1,0 +1,53 @@
+# Frontend deployment serving the static UI.
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: taskflow-frontend
+  namespace: taskflow
+  labels:
+    app.kubernetes.io/name: taskflow
+    app.kubernetes.io/component: frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: taskflow
+      app.kubernetes.io/component: frontend
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: taskflow
+        app.kubernetes.io/component: frontend
+    spec:
+      containers:
+        - name: frontend
+          image: taskflow-frontend:latest
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: API_BASE_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: taskflow-config
+                  key: API_BASE_URL
+          ports:
+            - containerPort: 80
+              name: http
+          readinessProbe:
+            httpGet:
+              path: /
+              port: http
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /
+              port: http
+            initialDelaySeconds: 15
+            periodSeconds: 20
+          resources:
+            requests:
+              cpu: 50m
+              memory: 64Mi
+            limits:
+              cpu: 200m
+              memory: 128Mi

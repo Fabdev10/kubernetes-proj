@@ -1,0 +1,18 @@
+# Service exposing the frontend to the ingress controller.
+apiVersion: v1
+kind: Service
+metadata:
+  name: taskflow-frontend
+  namespace: taskflow
+  labels:
+    app.kubernetes.io/name: taskflow
+    app.kubernetes.io/component: frontend
+spec:
+  selector:
+    app.kubernetes.io/name: taskflow
+    app.kubernetes.io/component: frontend
+  ports:
+    - port: 80
+      targetPort: 80
+      protocol: TCP
+      name: http

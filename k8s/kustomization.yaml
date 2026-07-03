@@ -1,0 +1,16 @@
+# Kustomization entrypoint for deploying the whole stack.
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: taskflow
+resources:
+  - namespace.yaml
+  - configmap.yaml
+  - secret.yaml
+  - postgres/pvc.yaml
+  - postgres/deployment.yaml
+  - postgres/service.yaml
+  - api/deployment.yaml
+  - api/service.yaml
+  - frontend/deployment.yaml
+  - frontend/service.yaml
+  - ingress/ingress.yaml

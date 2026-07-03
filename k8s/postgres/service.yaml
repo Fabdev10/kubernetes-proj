@@ -1,0 +1,18 @@
+# Internal service for PostgreSQL access from the API pods.
+apiVersion: v1
+kind: Service
+metadata:
+  name: taskflow-postgres
+  namespace: taskflow
+  labels:
+    app.kubernetes.io/name: taskflow
+    app.kubernetes.io/component: database
+spec:
+  selector:
+    app.kubernetes.io/name: taskflow
+    app.kubernetes.io/component: database
+  ports:
+    - port: 5432
+      targetPort: 5432
+      protocol: TCP
+      name: postgres

@@ -1,0 +1,15 @@
+# Persistent storage for PostgreSQL data.
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: taskflow-postgres-pvc
+  namespace: taskflow
+  labels:
+    app.kubernetes.io/name: taskflow
+    app.kubernetes.io/component: database
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 5Gi

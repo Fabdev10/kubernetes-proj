@@ -4,7 +4,8 @@
   "description": "TaskFlow REST API for Kubernetes demo",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "test": "node --check server.js"
   },
   "dependencies": {
     "express": "^4.21.2",
