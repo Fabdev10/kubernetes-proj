@@ -7,7 +7,11 @@ package-lock.json
 
 # Docker
 **/Dockerfile*
+!apps/api/Dockerfile
+!apps/frontend/Dockerfile
 **/.dockerignore
+!apps/api/.dockerignore
+!apps/frontend/.dockerignore
 
 env
 *.env
