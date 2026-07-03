@@ -55,17 +55,11 @@ jobs:
           ls -la apps/frontend
 
       - name: Build and push API image
-        uses: docker/build-push-action@v6
-        with:
-          context: ./apps/api
-          file: Dockerfile
-          push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/taskflow-api:${{ github.ref_name }}
+        run: |
+          docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/taskflow-api:${{ github.ref_name }} ./apps/api
+          docker push ${{ secrets.DOCKERHUB_USERNAME }}/taskflow-api:${{ github.ref_name }}
 
       - name: Build and push Frontend image
-        uses: docker/build-push-action@v6
-        with:
-          context: ./apps/frontend
-          file: Dockerfile
-          push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/taskflow-frontend:${{ github.ref_name }}
+        run: |
+          docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/taskflow-frontend:${{ github.ref_name }} ./apps/frontend
+          docker push ${{ secrets.DOCKERHUB_USERNAME }}/taskflow-frontend:${{ github.ref_name }}
