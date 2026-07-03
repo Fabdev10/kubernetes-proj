@@ -51,7 +51,7 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           context: ./apps/api
-          file: ./apps/api/Dockerfile
+          file: Dockerfile
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/taskflow-api:${{ github.ref_name }}
 
@@ -59,6 +59,6 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           context: ./apps/frontend
-          file: ./apps/frontend/Dockerfile
+          file: Dockerfile
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/taskflow-frontend:${{ github.ref_name }}
